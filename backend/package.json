@@ -1,0 +1,11 @@
+{
+  "name": "inventory_backend",
+  "version": "1.0.0",
+  "description": "Hitesh Engineering Inventory system backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RBL-Group A1",
+  "license": "ISC"
+}
