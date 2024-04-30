@@ -52,7 +52,6 @@ exports.updatePurchase = async (req, res) => {
     }
 };
 
-// purchase.controller.js
 exports.deletePurchase = async (req, res) => {
     try {
         const { id } = req.params; // Extract purchase ID from URL
@@ -70,7 +69,6 @@ exports.deletePurchase = async (req, res) => {
     }
 };
 
-// purchase.controller.js
 exports.getPurchaseById = async (req, res) => {
     try {
         const { id } = req.params; // Extract purchase ID from URL
