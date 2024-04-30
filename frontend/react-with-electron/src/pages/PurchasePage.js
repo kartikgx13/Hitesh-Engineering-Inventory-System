@@ -1,18 +1,19 @@
 import React from 'react'
 import HorizontalNav from '../components/HorizontalNav'
 import VerticalNav from '../components/VerticalNav'
+import PurchaseForm from '../components/PurchaseForm'
 
 function PurchasePage() {
   return (
     <>
-    <div className='w-screen h-screen flex flex-col bg-blue-300'>
-        <HorizontalNav/>
-        <div className='w-full h-full flex flex-row'>
-           <VerticalNav/>
-           <div className='w-full h-full'>
-                
-           </div>
-        </div>
+    <div className='w-screen h-screen bg-blue-200 flex flex-col'>
+       <HorizontalNav/>
+       <div className='flex flex-row justify-center items-center w-full h-full gap-2'>
+       <VerticalNav/>
+       <div className='w-full h-full'>
+        <PurchaseForm/>
+       </div>
+       </div>
     </div>
     </>
   )
