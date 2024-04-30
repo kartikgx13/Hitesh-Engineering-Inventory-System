@@ -10,6 +10,10 @@ const salesSchema = new mongoose.Schema({
         required: true,
         min: 1,
     },
+    purchase: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PURCHASE',
+    },
     date: {
         type: Date,
         default: Date.now,
@@ -24,7 +28,7 @@ module.exports = SALES;
 // const mongoose = require('mongoose');
 
 // const salesSchema = new mongoose.Schema({
-//     machinePart: {
+//     machinePartName: {
 //         type: mongoose.Schema.Types.ObjectId,
 //         ref: 'PURCHASE',
 //         required: true,
