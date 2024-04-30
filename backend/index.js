@@ -5,6 +5,7 @@ require('dotenv').config()
 const {connectToMongoDB} = require('./connect')
 const bodyParser = require('body-parser')
 const purchaseRoutes = require('./routes/purchase.route')
+const salesRoute = require('./routes/sales.route')
 
 const app = express();
 
@@ -20,6 +21,7 @@ connectToMongoDB(process.env.MONGODB)
 
 // Routes
 app.use('/api',purchaseRoutes)
+app.use('/api',salesRoute)
 
 app.listen(process.env.PORT, () => {
     console.log("Server Started")
