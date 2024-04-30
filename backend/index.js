@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 
 require('dotenv').config()
 
@@ -10,6 +11,7 @@ const salesRoute = require('./routes/sales.route')
 const app = express();
 
 // Middleware
+app.use(cors({origin: 'http://localhost:3000'}))
 app.use(bodyParser.json())
 
 connectToMongoDB(process.env.MONGODB)
