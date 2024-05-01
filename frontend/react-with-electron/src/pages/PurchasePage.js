@@ -13,9 +13,9 @@ function PurchasePage() {
     <>
     <div className='w-screen h-screen flex flex-col'>
        <VerticalNav/>
-       <div className='w-full h-full flex flex-row'>
+       <div className='w-full h-full flex flex-row m-0'>
        <PurchaseForm/> 
-      <PurchaseList/>
+       <PurchaseList/>
        </div>
     </div>
     </>
