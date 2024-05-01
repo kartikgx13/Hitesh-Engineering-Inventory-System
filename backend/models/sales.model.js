@@ -18,6 +18,30 @@ const salesSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    buyerName: {
+        type: String,
+        required: true,
+    },
+    invoiceNumber: {
+        type: String,
+        required: true,
+    },
+    invoiceDate: {
+        type: Date,
+        required: true,
+    },
+    invoiceAmount: {
+        type: Number,
+        required: true,
+    },
+    userEmail: {
+        type: String,
+        required: true,
+    },
+    shipmentDate: {
+        type: Date,
+        required: true,
+    },
 });
 
 const SALES = mongoose.model('SALES', salesSchema);
