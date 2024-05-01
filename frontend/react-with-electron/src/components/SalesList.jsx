@@ -6,7 +6,7 @@ function SalesList() {
       //first step we will create a useState hook to store the array object
   const [sales,setSales] = useState([])
   const [currentPage,setCurrentPage] = useState(1)
-  const recordsPerPage = 10
+  const recordsPerPage = 7
   const lastIndex = currentPage*recordsPerPage
   const firstIndex = lastIndex-recordsPerPage
   const records = sales.slice(firstIndex,lastIndex)

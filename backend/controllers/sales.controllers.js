@@ -5,7 +5,7 @@ exports.createSale = async (req, res) => {
     try {
         const { machinePartName, quantity, buyerName, invoiceNumber, invoiceDate, invoiceAmount, userEmail, shipmentDate } = req.body;
         const purchaseRecord = await PURCHASE.findOne({ machinePartName });
-        if (!purchaseRecord && purchaseRecord.quantity < quantity) {
+        if (!purchaseRecord || purchaseRecord.quantity < quantity) {
             return res.status(400).json({ error: 'Not enough parts in stock' });
         }
         const newSale = await SALES.create({
