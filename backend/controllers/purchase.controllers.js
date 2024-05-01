@@ -2,12 +2,17 @@ const PURCHASE = require('../models/purchase.model')
 
 exports.createPURCHASE = async (req,res) => {
     try {
-        const {machinePartName, invoiceNumber,userEmail,quantity} = req.body
+        const {machinePartName, invoiceNumber,userEmail,quantity,sellerName,invoiceDate,purchaseDate,invoiceAmount,shipmentDate} = req.body
         const newPURCHASE = await PURCHASE.create({
             machinePartName,
             invoiceNumber,
             userEmail,
             quantity,
+            sellerName,
+            invoiceDate,
+            purchaseDate,
+            invoiceAmount,
+            shipmentDate
         })
         res.status(201).json(newPURCHASE);
     } catch (error) {
@@ -28,16 +33,21 @@ exports.getAllPurchases = async (req, res) => {
 exports.updatePurchase = async (req, res) => {
     try {
         const { id } = req.params; // Extract purchase ID from URL
-        const { machinePartName, invoiceNumber, userEmail, quantity } = req.body;
+        const {machinePartName, invoiceNumber,userEmail,quantity,sellerName,invoiceDate,purchaseDate,invoiceAmount,shipmentDate} = req.body
 
         // Find the purchase record by ID and update its fields
         const updatedPurchase = await PURCHASE.findByIdAndUpdate(
             id,
             {
-                machinePartName,
-                invoiceNumber,
-                userEmail,
-                quantity,
+            machinePartName,
+            invoiceNumber,
+            userEmail,
+            quantity,
+            sellerName,
+            invoiceDate,
+            purchaseDate,
+            invoiceAmount,
+            shipmentDate
             },
             { new: true } // Return the updated record
         );

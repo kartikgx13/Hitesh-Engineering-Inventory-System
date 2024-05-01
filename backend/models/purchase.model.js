@@ -18,6 +18,31 @@ const purchaseSchema = new mongoose.Schema({
         required: true,
         min: 1,
     },
+    sellerName:{
+        type:String,
+        required:true,
+    },
+    invoiceDate:{
+        type:Date,
+        required:true,
+        default:Date.now
+    },
+    purchaseDate:{
+        type:Date,
+        required:true,
+        default:Date.now
+    },
+    invoiceAmount:{
+       type:Number,
+       required:true,
+       min:1,
+    },
+    shipmentDate:{
+        type:Date,
+        required:true,
+        default:Date.now
+    }
+
 })
 
 const PURCHASE = mongoose.model('PURCHASE', purchaseSchema);

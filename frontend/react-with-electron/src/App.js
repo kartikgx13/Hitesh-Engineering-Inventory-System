@@ -7,6 +7,8 @@ import Dashboard from './pages/Dashboard';
 import PurchasePage from './pages/PurchasePage';
 import SalesPage from './pages/SalesPage';
 import { Route, Routes,Link } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
     <Route path='/sales' element={<SalesPage/>}></Route>
     <Route path='/bom' element={<BOMPage/>}></Route>
    </Routes>
+   <ToastContainer/>
     </>
   );
 }

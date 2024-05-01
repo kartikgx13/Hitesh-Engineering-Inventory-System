@@ -5,8 +5,7 @@ import VerticalNav from '../components/VerticalNav'
 function BOMPage() {
   return (
     <>
-    <div className='w-screen h-screen bg-blue-200 flex flex-col'>
-       <HorizontalNav/>
+    <div className='w-screen h-screen flex flex-col'>
        <VerticalNav/>
     </div>
     </>

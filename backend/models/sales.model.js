@@ -20,7 +20,7 @@ const salesSchema = new mongoose.Schema({
     },
 });
 
-const SALES = mongoose.model('SALES', salesSchema);
+const SALES = mongoose.model('SALES',salesSchema);
 
 module.exports = SALES;
 

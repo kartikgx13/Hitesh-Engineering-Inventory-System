@@ -29,25 +29,50 @@ function SalesForm() {
    
   return (
     <>
-    <div className='w-full h-full flex flex-col justify-start items-start'>
-     <h1 className='text-2xl font-bold w-full'>Sales</h1>
-     <div className='w-full h-full flex flex-row justify-center items-center gap-4'>
-        <h1 className='text-2xl font-bold'>Machine Details</h1>
-        <div className='w-1/3 h-full'>
-           <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center w-full h-full ml-20'>
-                <div className='flex flex-row w-full gap-3 h-1/12 justify-start items-center'>
-                    <label htmlFor="machinePartName" className='font-semibold w-1/3'>Machine Name</label>
-                    <input type="text" name="machinePartName" value={machinePartName} onChange={handleChange} placeholder='Enter machine name' className='w-2/3 m-2 p-2 outline-none border-none rounded shadow-md'/>
-                </div>
-                <div className='flex flex-row gap-3 w-full h-1/12 justify-start items-center'>
-                    <label htmlFor="quantity" className='font-semibold w-1/3'>Quantity</label>
-                    <input type="text" name="quantity" value={quantity} onChange={handleChange} placeholder='Enter quantity' className='w-2/3 m-2 p-2 outline-none border-none rounded shadow-md'/>
-                </div>
-                <div className='flex flex-row gap-3 w-full h-1/12 justify-start items-center'>
-                    <label htmlFor="date" className='font-semibold w-1/3'>Date</label>
-                    <input type="date" name="date" value={date} onChange={handleChange} required placeholder='Enter date' className='w-2/3 m-2 p-2 outline-none border-none rounded shadow-md'/>
-                </div>
-                <button className='bg-sky-500 pl-6 pr-6 pt-2 pb-2 rounded-full font-semibold text-white mt-6'>Add Item</button>
+    <div className='w-1/2 h-full flex flex-col justify-start items-start'>
+     <h1 className='text-2xl font-bold w-full p-4'>Sales</h1>
+     <div className='w-full h-full flex flex-col justify-start items-start gap-4'>
+     <div className='border-2 border-gray ml-4 w-2/3 shadow-md'></div>
+        <h1 className='text-1xl font-semibold p-4'>Sales Invoice Details</h1>
+        <div className='w-full h-full p-4'>
+           <form onSubmit={handleSubmit} className="grid items-end gap-6 mb-6 md:grid-cols-3 w-2/3 h-1/2">
+  <div className="relative">
+        <input required type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Buyer</label>
+    </div>
+    <div className="relative">
+        <input required type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Machine Name</label>
+    </div>
+    <div className="relative">
+        <input required type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Invoice No.</label>
+    </div>
+    <div className="relative">
+        <input required type="date" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Invoice Date</label>
+    </div>
+    <div className="relative">
+        <input required type="date" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Sale Date</label>
+    </div>
+    <div className="relative">
+        <input required type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Invoice Amount</label>
+    </div>
+    <div className="relative">
+        <input required type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Order Quantity</label>
+    </div>
+    <div className="relative">
+        <input required type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">E-mail</label>
+    </div>
+    <div className="relative">
+        <input required type="date" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" className="absolute text-sm text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Shipment Date</label>
+    </div>
+                <button className='bg-sky-500 pl-6 pr-6 pt-2 pb-2 shadow-lg rounded-full font-semibold text-white mt-6'>Add Sales</button>
            </form>
         </div>
      </div>

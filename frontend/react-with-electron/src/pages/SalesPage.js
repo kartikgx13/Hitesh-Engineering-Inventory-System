@@ -6,13 +6,10 @@ import SalesForm from '../components/SalesForm'
 function SalesPage() {
   return (
     <>
-    <div className='w-screen h-screen bg-blue-200 flex flex-col'>
-       <HorizontalNav/>
-       <div className='flex flex-row justify-center items-center w-full h-full gap-2'>
+    <div className='w-screen h-screen  flex flex-col'>
        <VerticalNav/>
        <div className='w-full h-full'>
         <SalesForm/>
-       </div>
        </div>
     </div>
     </>
