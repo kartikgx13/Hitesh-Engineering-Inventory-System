@@ -3,15 +3,26 @@ const PURCHASE = require('../models/purchase.model');
 
 exports.createBOM = async (req, res) => {
     try {
-        const { machinePartName, invoiceNumber, parts } = req.body;
-        const purchaseRecord = await PURCHASE.findOne({ machinePartName, invoiceNumber });
-        if (!purchaseRecord) {
-            return res.status(400).json({ error: 'Purchase record not found' });
-        }
-        const newBOM = await BOM.create({
-            machinePartName,
+        const { machineName, invoiceNumber, parts } = req.body;
+        const newParts = await Promise.all(parts.map(async (part) => {
+            const purchaseRecord = await PURCHASE.findOne({ machinePartName: part.partName });
+            if (!purchaseRecord) {
+                throw new Error(`Purchase record not found for part: ${part.partName}`);
+            }
+            if (purchaseRecord.quantity < part.quantity) {
+                throw new Error(`Not enough quantity for part: ${part.partName}`);
+            }
+            purchaseRecord.quantity -= part.quantity;
+            await purchaseRecord.save();
+            return {
+                partName: purchaseRecord._id,
+                quantity: part.quantity,
+            };
+        }));
+        const newBOM = await BOM.create({ 
+            machineName,
             invoiceNumber,
-            parts,
+            parts: newParts,
         });
         res.status(201).json(newBOM);
     } catch (error) {
@@ -23,11 +34,27 @@ exports.createBOM = async (req, res) => {
 exports.updateBOM = async (req, res) => {
     try {
         const { id } = req.params;
-        const { machinePartName, invoiceNumber, parts } = req.body;
+        const { machineName, invoiceNumber, parts } = req.body;
+
+        const updatedParts = await Promise.all(parts.map(async (part) => {
+            const purchaseRecord = await PURCHASE.findOne({ machinePartName: part.partName });
+            if (!purchaseRecord) {
+                throw new Error(`Purchase record not found for part: ${part.partName}`);
+            }
+            if (purchaseRecord.quantity < part.quantity) {
+                throw new Error(`Not enough quantity for part: ${part.partName}`);
+            }
+            purchaseRecord.quantity -= part.quantity;
+            await purchaseRecord.save();
+            return {
+                partName: purchaseRecord._id,
+                quantity: part.quantity,
+            };
+        }));
 
         const updatedBOM = await BOM.findByIdAndUpdate(
             id,
-            { machinePartName, invoiceNumber, parts },
+            { machineName, invoiceNumber, parts: updatedParts },
             { new: true }
         );
 
@@ -85,4 +112,3 @@ exports.deleteBOM = async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
-

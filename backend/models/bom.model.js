@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const bomSchema = new mongoose.Schema({
-    machinePartName: {
+    machineName: {  
         type: String,
         required: true,
     },
@@ -10,12 +11,8 @@ const bomSchema = new mongoose.Schema({
         required: true,
     },
     parts: [{
-        partName: String,
-        quantity: {
-            type: Number,
-            required: true,
-            min: 1,
-        },
+        partName: { type: Schema.Types.ObjectId, ref: 'PURCHASE' },  // reference to PURCHASE model
+        quantity: { type: Number, required: true, min: 1 },
     }],
 });
 
