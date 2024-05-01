@@ -3,7 +3,7 @@ const PURCHASE = require('../models/purchase.model');
 
 exports.createSale = async (req, res) => {
     try {
-        const { machinePartName, quantity } = req.body;
+        const { machinePartName, quantity, buyerName, invoiceNumber, invoiceDate, invoiceAmount, userEmail, shipmentDate } = req.body;
         const purchaseRecord = await PURCHASE.findOne({ machinePartName });
         if (!purchaseRecord && purchaseRecord.quantity < quantity) {
             return res.status(400).json({ error: 'Not enough parts in stock' });
@@ -11,6 +11,12 @@ exports.createSale = async (req, res) => {
         const newSale = await SALES.create({
             machinePartName,
             quantity,
+            buyerName,
+            invoiceNumber,
+            invoiceDate,
+            invoiceAmount,
+            userEmail,
+            shipmentDate,
         });
 
         purchaseRecord.quantity -= quantity;
@@ -36,7 +42,7 @@ exports.getAllSales = async (req, res) => {
 exports.updateSale = async (req, res) => {
     try {
         const { id } = req.params;
-        const { machinePartName, quantity } = req.body;
+        const { machinePartName, quantity, buyerName, invoiceNumber, invoiceDate, invoiceAmount, userEmail, shipmentDate } = req.body;
 
         // Check if there is enough quantity in stock
         const purchaseRecord = await PURCHASE.findOne({ machinePartName });
@@ -46,7 +52,7 @@ exports.updateSale = async (req, res) => {
 
         const updatedSale = await SALES.findByIdAndUpdate(
             id,
-            { machinePartName, quantity },
+            { machinePartName, quantity, buyerName, invoiceNumber, invoiceDate, invoiceAmount, userEmail, shipmentDate },
             { new: true }
         );
 

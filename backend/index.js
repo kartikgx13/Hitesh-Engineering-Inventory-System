@@ -7,6 +7,7 @@ const {connectToMongoDB} = require('./connect')
 const bodyParser = require('body-parser')
 const purchaseRoutes = require('./routes/purchase.route')
 const salesRoute = require('./routes/sales.route')
+const bomRoutes = require('./routes/bom.route');
 
 const app = express();
 
@@ -24,6 +25,7 @@ connectToMongoDB(process.env.MONGODB)
 // Routes
 app.use('/api',purchaseRoutes)
 app.use('/api',salesRoute)
+app.use('/api', bomRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("Server Started")
