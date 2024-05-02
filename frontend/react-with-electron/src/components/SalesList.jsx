@@ -9,7 +9,7 @@ function SalesList() {
       //first step we will create a useState hook to store the array object
   const [sales,setSales] = useState([])
   const [currentPage,setCurrentPage] = useState(1)
-  const recordsPerPage = 4
+  const recordsPerPage = 3
   const lastIndex = currentPage*recordsPerPage
   const firstIndex = lastIndex-recordsPerPage
   const records = sales.slice(firstIndex,lastIndex)
@@ -105,44 +105,44 @@ const displayKeyValuePairs = (data) => {
     <table className='rounded-md shadow-lg'>
       <thead>
         <tr>
-      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Buyer</th>
-      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Machine Part Name</th>
-      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Invoice No.</th>
-      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Invoice Amount</th>
-      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Quantity</th>
-      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Buyer</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Machine Part Name</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Invoice No.</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Invoice Amount</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Quantity</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
         </tr>
       </thead>
       <tbody>
       {records.map((sales,index)=>(
             <tr key={index}>
-                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.buyerName}</td>
-                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.machinePartName}</td>
-                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.invoiceNumber}</td>
-                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.invoiceAmount}</td>
-                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.quantity}</td>
-                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
-                  <FontAwesomeIcon icon={faTrash} className='m-2 cursor-pointer' style={{ color: 'red' }} onClick={() => deleteProduct(sales._id)}/>
-                  <FontAwesomeIcon icon={faEye} className='m-2 cursor-pointer' style={{ color: 'green' }} onClick={() => displayKeyValuePairs(sales)}/>
+                <td className="border-b p-2 border-gray-200 bg-white text-xs">{sales.buyerName}</td>
+                <td className="border-b p-2 border-gray-200 bg-white text-xs">{sales.machinePartName}</td>
+                <td className="border-b p-2 border-gray-200 bg-white text-xs">{sales.invoiceNumber}</td>
+                <td className="border-b p-2 border-gray-200 bg-white text-xs">{sales.invoiceAmount}</td>
+                <td className="border-b p-2 border-gray-200 bg-white text-xs">{sales.quantity}</td>
+                <td className="border-b p-2 border-gray-200 bg-white text-xs">
+                  <FontAwesomeIcon icon={faTrash} className='m-2 cursor-pointer' style={{ color: 'red',fontSize:'10' }} onClick={() => deleteProduct(sales._id)}/>
+                  <FontAwesomeIcon icon={faEye} className='m-2 cursor-pointer' style={{ color: 'green',fontSize:'10' }} onClick={() => displayKeyValuePairs(sales)}/>
                 </td>
             </tr>
         ))}
       </tbody>
     </table>
-    <nav className='w-full p-2 mt-6'>
-      <ul className='flex flex-row w-full justify-center items-center'>
+    <nav className='w-full p-1 mt-4'>
+      <ul className='flex flex-row w-full justify-center items-center text-xs'>
         <li>
-          <a href="#" className='border-2 border-gray p-2' onClick={prevPage}>Prev</a>
+          <a href="#" className='border-2 border-gray p-1' onClick={prevPage}>Prev</a>
         </li>
         {
           numbers.map((n,i)=>(
             <li key={i}>
-               <a href="#" className={currentPage===n?' bg-sky-500 shadow-md pt-2 pb-2 pl-4 pr-4':'shadow-md pt-2 pb-2 pl-4 pr-4'} onClick={()=>changeCurrentPage(n)}>{n}</a>
+               <a href="#" className={currentPage===n?'border-2 border-gray text-xs bg-sky-500 shadow-md pt-1 pb-1 pl-2 pr-2':'border-2 border-gray text-xs shadow-md pt-1 pb-1 pl-2 pr-2'} onClick={()=>changeCurrentPage(n)}>{n}</a>
             </li>
           ))
         }
         <li>
-        <a href="#" className='border-2 border-gray p-2' onClick={nextPage}>Next</a>
+        <a href="#" className='border-2 border-gray p-1 text-xs' onClick={nextPage}>Next</a>
         </li>
       </ul>
     </nav>

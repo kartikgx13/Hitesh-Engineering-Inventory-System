@@ -83,16 +83,16 @@ function PurchaseForm() {
    
   return (
     <>
-    <div className='w-2/3 h-full flex flex-col justify-start items-start'>
-     <h1 className='text-2xl font-bold w-full p-4'>Purchases</h1>
+    <div className='w-3/4 h-full flex flex-col justify-start items-start'>
+     <h1 className='text-1xl font-bold w-full p-2'>Purchases</h1>
      <div className='w-full h-full flex flex-col justify-start items-start gap-4'>
-     <div className='border-2 border-gray ml-4 w-2/3 shadow-md'></div>
-        <h1 className='text-1xl font-semibold p-4'>Purchase Invoice Details</h1>
-        <div className='w-full h-full p-4'>
+     <div className='border-2 border-gray ml-2 w-2/3 shadow-md'></div>
+        <h1 className='text-sm font-semibold p-2'>Purchase Invoice Details</h1>
+        <div className='w-full h-full p-2'>
            <form onSubmit={handleSubmit} className="grid items-end gap-6 mb-6 md:grid-cols-3 w-2/3">
   <div className="relative">
         <input required onChange={handleChange} name='sellerName' value={sellerName} type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-xs text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-        <label for="small_outlined" className="absolute text-xs text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Seller</label>
+        <label for="small_outlined" className="absolute text-xs text-gray-500  duration-300 transform -translate-y-3 scale-25 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Seller</label>
     </div>
     <div className="relative">
         <input required onChange={handleChange} name='machinePartName' value={machinePartName} type="text" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-xs text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
@@ -126,7 +126,7 @@ function PurchaseForm() {
         <input required onChange={handleChange} name='shipmentDate' value={shipmentDate} type="date" id="small_outlined" className="cursor-pointer shadow-md block px-2.5 pb-1.5 pt-3 w-full text-xs text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
         <label for="small_outlined" className="absolute text-xs text-gray-500  duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Shipment Date</label>
     </div>
-                <button className='bg-sky-500 text-xs pl-6 pr-6 pt-2 pb-2 shadow-lg rounded-full font-semibold text-white mt-6'>Add Purchase</button>
+                <button className='bg-sky-500 text-xs pl-6 pr-6 pt-2 pb-2 shadow-lg rounded-lg font-semibold text-white mt-6'>Add Purchase</button>
            </form>
         </div>
      </div>
