@@ -137,7 +137,7 @@ const displayKeyValuePairs = (data) => {
         {
           numbers.map((n,i)=>(
             <li key={i}>
-               <a href="#" className={currentPage===n?'border-2 border-gray text-xs bg-sky-500 shadow-md pt-1 pb-1 pl-2 pr-2':'border-2 border-gray text-xs shadow-md pt-1 pb-1 pl-2 pr-2'} onClick={()=>changeCurrentPage(n)}>{n}</a>
+               <a href="#" className={currentPage===n?'border-2 border-gray text-xs bg-sky-500 pt-1 pb-1 pl-2 pr-2':'border-2 border-gray text-xs pt-1 pb-1 pl-2 pr-2'} onClick={()=>changeCurrentPage(n)}>{n}</a>
             </li>
           ))
         }

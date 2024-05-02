@@ -6,6 +6,7 @@ exports.createBOM = async (req, res) => {
         const { machineName, invoiceNumber, parts } = req.body;
         const newParts = await Promise.all(parts.map(async (part) => {
             const purchaseRecord = await PURCHASE.findOne({ machinePartName: part.partName });
+            console.log(purchaseRecord)
             if (!purchaseRecord) {
                 throw new Error(`Purchase record not found for part: ${part.partName}`);
             }
