@@ -115,12 +115,12 @@ function PurchaseList() {
       <tbody>
       {records.map((purchase,index)=>(
             <tr key={index}>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{purchase.sellerName}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{purchase.machinePartName}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{purchase.invoiceNumber}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{purchase.invoiceAmount}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{purchase.quantity}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{purchase.sellerName}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{purchase.machinePartName}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{purchase.invoiceNumber}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{purchase.invoiceAmount}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{purchase.quantity}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                   <FontAwesomeIcon icon={faTrash} className='m-2 cursor-pointer' style={{ color: 'red' }} onClick={() => deleteProduct(purchase._id)}/>
                   <FontAwesomeIcon icon={faEye} className='m-2 cursor-pointer' style={{ color: 'green' }} onClick={() => displayKeyValuePairs(purchase)}/>
                 </td>

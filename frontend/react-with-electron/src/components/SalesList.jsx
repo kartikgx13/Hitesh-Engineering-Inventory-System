@@ -9,7 +9,7 @@ function SalesList() {
       //first step we will create a useState hook to store the array object
   const [sales,setSales] = useState([])
   const [currentPage,setCurrentPage] = useState(1)
-  const recordsPerPage = 7
+  const recordsPerPage = 4
   const lastIndex = currentPage*recordsPerPage
   const firstIndex = lastIndex-recordsPerPage
   const records = sales.slice(firstIndex,lastIndex)
@@ -116,12 +116,12 @@ const displayKeyValuePairs = (data) => {
       <tbody>
       {records.map((sales,index)=>(
             <tr key={index}>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{sales.buyerName}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{sales.machinePartName}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{sales.invoiceNumber}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{sales.invoiceAmount}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{sales.quantity}</td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.buyerName}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.machinePartName}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.invoiceNumber}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.invoiceAmount}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">{sales.quantity}</td>
+                <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                   <FontAwesomeIcon icon={faTrash} className='m-2 cursor-pointer' style={{ color: 'red' }} onClick={() => deleteProduct(sales._id)}/>
                   <FontAwesomeIcon icon={faEye} className='m-2 cursor-pointer' style={{ color: 'green' }} onClick={() => displayKeyValuePairs(sales)}/>
                 </td>
