@@ -103,8 +103,8 @@ const dateFormat = (date) =>{
          <KPICards title="Top Selling" value={getTopSellingProduct()} iconName={faTrophy} iconColor="orange" iconBgColor="bg-orange-200" borderColor="border-orange-400"/>
          <KPICards title="Avg. Order Value" value={getAverageOrderValue()} iconName={faShoppingBasket} iconColor="purple" iconBgColor="bg-purple-200" borderColor="border-purple-700"currencyIconName={faIndianRupee}/>
          </div>
-         <div className='w-full h-1/2 flex flex-col m-2 gap-4'>
-         <div className='w-full h-1/2 flex flex-col p-3 border-2 rounded-md'>
+         <div className='w-full h-5/6 flex flex-col m-2 gap-4'>
+         <div className='w-full h-2/3 flex flex-col p-3 border-2 rounded-md'>
           <div className='w-full flex flex-row justify-between items-center mb-2'>
           <h1 className='w-full font-semibold text-sm'>Recent Purchases</h1>
           <NavLink to='/purchases' className='text-sm w-1/6 text-right text-sky-500'>+ Add new purchase</NavLink>
@@ -118,7 +118,7 @@ const dateFormat = (date) =>{
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice No.</th>
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice Amount</th>
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Quantity</th>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">InvoiceDate</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice Date</th>
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Shipment Date</th>
       <th className="border-b-2 rounded-tr-lg p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Purchase Date</th>
 
@@ -141,7 +141,7 @@ const dateFormat = (date) =>{
       </table>
           </div>
          </div>
-         <div className='w-full h-1/2 flex flex-col p-3 border-2 rounded-md'>
+         <div className='w-full h-2/3 flex flex-col p-3 border-2 rounded-md'>
           <div className='w-full flex flex-row justify-between items-center mb-2'>
           <h1 className='w-full font-semibold text-sm'>Recent Sales</h1>
           <NavLink to='/sales' className='text-sm w-1/6 text-right text-sky-500'>+ Add new sale</NavLink>
@@ -155,7 +155,7 @@ const dateFormat = (date) =>{
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice No.</th>
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice Amount</th>
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Quantity</th>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">InvoiceDate</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice Date</th>
       <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Shipment Date</th>
       <th className="border-b-2 rounded-tr-lg p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Sale Date</th>
 
