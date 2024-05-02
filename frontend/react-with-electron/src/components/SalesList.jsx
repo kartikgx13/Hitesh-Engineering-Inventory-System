@@ -1,9 +1,10 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrash,faFileExport, faFileExcel } from '@fortawesome/free-solid-svg-icons';
 import swal from "sweetalert";
 import { toast } from "react-toastify";
+import {utils,writeFile} from 'xlsx';
 
 function SalesList() {
       //first step we will create a useState hook to store the array object
@@ -99,18 +100,24 @@ const displayKeyValuePairs = (data) => {
                 console.error('Error fetching data: ', error);
             })
     },[sales])
+    const handleExport = () => {
+      const wb = utils.book_new();
+      const ws = utils.json_to_sheet(sales);
+      utils.book_append_sheet(wb, ws, "PurchaseRecord");
+      writeFile(wb, "PurchaseExcel.xlsx");
+  }
   return (
     <>
     <div className='flex flex-col w-full h-full p-6'>
     <table className='rounded-md shadow-lg'>
       <thead>
         <tr>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Buyer</th>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Machine Part Name</th>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Invoice No.</th>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Invoice Amount</th>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Quantity</th>
-      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
+      <th className="border-b-2 rounded-tl-lg p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Buyer</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Machine Part Name</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice No.</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice Amount</th>
+      <th className="border-b-2 p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Quantity</th>
+      <th className="border-b-2 rounded-tr-lg p-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -129,10 +136,10 @@ const displayKeyValuePairs = (data) => {
         ))}
       </tbody>
     </table>
-    <nav className='w-full p-1 mt-4'>
-      <ul className='flex flex-row w-full justify-center items-center text-xs'>
+    <nav className='w-full p-1 mt-4 flex flex-row justify-between items-center'>
+      <ul className='flex flex-row w-full justify-start items-center'>
         <li>
-          <a href="#" className='border-2 border-gray p-1' onClick={prevPage}>Prev</a>
+          <a href="#" className='border-2 border-gray p-1 text-xs' onClick={prevPage}>Prev</a>
         </li>
         {
           numbers.map((n,i)=>(
@@ -145,6 +152,9 @@ const displayKeyValuePairs = (data) => {
         <a href="#" className='border-2 border-gray p-1 text-xs' onClick={nextPage}>Next</a>
         </li>
       </ul>
+      <div className='flex flex-row justify-end items-center w-full gap-3'>
+        <button onClick={handleExport} className='text-sm font-semibold flex flex-row justify-center items-center gap-2 rounded-md shadow-md p-2'>Export<FontAwesomeIcon icon={faFileExcel} style={{color:'green',fontSize:'15'}}/></button>
+      </div>
     </nav>
     </div>
     </>

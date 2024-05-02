@@ -18,7 +18,7 @@ function KPICards({title,value,iconName,borderColor,iconBgColor,iconColor,curren
             </div>
         </div>
        </div>
-       <div className={`flex flex-row justify-center items-center p-2 rounded-md shadow-md ${iconBgColor}`}>
+       <div className={`flex flex-row justify-center items-center p-2 rounded-md shadow-md cursor-pointer ${iconBgColor}`}>
           <FontAwesomeIcon icon={iconName} style={{ color:iconColor,fontSize:'15'}}/>
        </div>
     </div>
