@@ -6,7 +6,6 @@ exports.createBOM = async (req, res) => {
         const { machineName, invoiceNumber, parts } = req.body;
         const newParts = await Promise.all(parts.map(async (part) => {
             const purchaseRecord = await PURCHASE.findOne({ machinePartName: part.partName });
-            console.log(purchaseRecord)
             if (!purchaseRecord) {
                 throw new Error(`Purchase record not found for part: ${part.partName}`);
             }
@@ -18,6 +17,7 @@ exports.createBOM = async (req, res) => {
             return {
                 partName: purchaseRecord._id,
                 quantity: part.quantity,
+                invoiceAmount: purchaseRecord.invoiceAmount,
             };
         }));
         const newBOM = await BOM.create({ 
@@ -50,6 +50,7 @@ exports.updateBOM = async (req, res) => {
             return {
                 partName: purchaseRecord._id,
                 quantity: part.quantity,
+                invoiceAmount: purchaseRecord.invoiceAmount,
             };
         }));
 
@@ -74,7 +75,7 @@ exports.getBOM = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const bom = await BOM.findById(id);
+        const bom = await BOM.findById(id).populate('parts.partName');
 
         if (!bom) {
             return res.status(404).json({ error: 'BOM record not found' });
@@ -89,7 +90,7 @@ exports.getBOM = async (req, res) => {
 
 exports.getAllBOMs = async (req, res) => {
     try {
-        const boms = await BOM.find();
+        const boms = await BOM.find().populate('parts.partName');
         res.status(200).json(boms);
     } catch (error) {
         console.error('Error', error);
