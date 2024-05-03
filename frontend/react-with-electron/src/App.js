@@ -9,6 +9,7 @@ import SalesPage from './pages/SalesPage';
 import { Route, Routes,Link } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import InfographicsPage from './pages/InfographicsPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
     <Route path='/purchases' element={<PurchasePage/>}></Route>
     <Route path='/sales' element={<SalesPage/>}></Route>
     <Route path='/bom' element={<BOMPage/>}></Route>
+    <Route path='/infographics' element={<InfographicsPage/>}></Route>
    </Routes>
    <ToastContainer/>
     </>
