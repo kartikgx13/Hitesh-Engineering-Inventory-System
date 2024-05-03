@@ -5,7 +5,7 @@ import React from 'react'
 function KPICards({title,value,iconName,borderColor,iconBgColor,iconColor,currencyIconName}) {
   return (
     <>
-    <div className='w-full p-2 rounded-md flex flex-row justify-between items-center border-2 border-gray-200'>
+    <div className='w-full p-3 rounded-md flex flex-row justify-between items-center border-2 border-gray-200'>
        <div className='flex flex-row justify-center items-center gap-2'>
         <div className={`border-2 rounded-lg shadow-md h-12 ${borderColor}`}></div>
         <div className='flex flex-col justify-center items-center p-2 gap-2'>

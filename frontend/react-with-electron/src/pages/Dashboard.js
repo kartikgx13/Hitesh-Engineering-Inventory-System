@@ -96,7 +96,7 @@ const dateFormat = (date) =>{
     <div className='w-screen h-screen flex flex-col'>
        <VerticalNav/>
        <div className='w-full h-full flex flex-row justify-between'>
-         <div className=' w-56 h-full flex flex-col gap-5 justify-start items-center p-2'>
+         <div className=' w-56 h-full flex flex-col gap-4 justify-start items-center p-2'>
          <KPICards title="Sales revenue" value={getSalesRevenue()} iconName={faChartLine} iconColor="blue" iconBgColor="bg-sky-200" borderColor="border-blue-700" currencyIconName={faIndianRupee}/>
          <KPICards title="Purchase Cost" value={getPurchaseCost()} iconName={faMoneyBill1Wave} iconColor="green" iconBgColor="bg-green-200" borderColor="border-green-700" currencyIconName={faIndianRupee}/>
          <KPICards title="Gross Profit/Loss" value={getSalesRevenue()-getPurchaseCost()} iconName={faChartArea} iconColor="red" iconBgColor="bg-red-200" borderColor="border-red-700" currencyIconName={faIndianRupee}/>

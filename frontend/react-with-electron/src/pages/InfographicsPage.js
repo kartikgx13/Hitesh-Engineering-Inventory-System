@@ -390,7 +390,7 @@ const getPurchaseNumber =() =>{
        {/*<BarChart options={options} dataset={purchaseQuantityBarChartData}/>*/}
        {/*<PieChart options={options} dataset={pieChartData}/>*/}
        <div className='w-full h-full flex flex-row justify-center items-start gap-4 p-3'>
-       <div className='w-1/2 h-5/6 flex flex-col gap-3'>
+       <div className='w-1/2 h-full flex flex-col gap-3'>
           <div className='w-full h-full flex justify-center items-center shadow-lg p-2 rounded-md'>
                <LineChart options={lineChartOptions} dataset={lineChartData}/>
           </div>
@@ -405,7 +405,7 @@ const getPurchaseNumber =() =>{
             </div>
   </div>*/}
        </div>
-       <div className='w-1/2 h-5/6 flex flex-col gap-3'>
+       <div className='w-1/2 h-full flex flex-col gap-3'>
           <div className='w-full h-1/2 flex flex-row gap-2 justify-center items-center p-2 '>
           <div className='w-1/2 h-full flex flex-row justify-center items-center shadow-lg  rounded-md'>
           <BarChart options={barchartOptionsSales} dataset={salesQuantityBarChartData}/>
