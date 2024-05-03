@@ -75,7 +75,7 @@ exports.getBOM = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const bom = await BOM.findById(id).populate('parts.partName');
+        const bom = await BOM.findById(id).populate('parts.partName', 'machinePartName');
 
         if (!bom) {
             return res.status(404).json({ error: 'BOM record not found' });
@@ -90,7 +90,7 @@ exports.getBOM = async (req, res) => {
 
 exports.getAllBOMs = async (req, res) => {
     try {
-        const boms = await BOM.find().populate('parts.partName');
+        const boms = await BOM.find().populate('parts.partName', 'machinePartName');
         res.status(200).json(boms);
     } catch (error) {
         console.error('Error', error);

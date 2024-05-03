@@ -13,7 +13,7 @@ const bomSchema = new mongoose.Schema({
     parts: [{
         partName: { type: Schema.Types.ObjectId, ref: 'PURCHASE' },  // reference to PURCHASE model
         quantity: { type: Number, required: true, min: 1 },
-        invoiceAmount: { type: Schema.Types.ObjectId, ref: 'PURCHASE' },
+        invoiceAmount: { type: Number, required: true, min: 0 },
     }],
 });
 
