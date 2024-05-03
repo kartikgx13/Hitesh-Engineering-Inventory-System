@@ -73,7 +73,7 @@ function Dashboard() {
 
   const recentSales = () => {
     const recentSalesArray = [];
-    const startIndex = Math.max(sales.length - 3, 0); // Start index for slicing
+    const startIndex = Math.max(sales.length - 4, 0); // Start index for slicing
     for (let i = startIndex; i < sales.length; i++) {
         recentSalesArray.push(sales[i]);
     }
@@ -82,7 +82,7 @@ function Dashboard() {
 
 const recentPurchases = () => {
     const recentPurchasesArray = [];
-    const startIndex = Math.max(purchase.length - 3, 0); // Start index for slicing
+    const startIndex = Math.max(purchase.length - 4, 0); // Start index for slicing
     for (let i = startIndex; i < purchase.length; i++) {
         recentPurchasesArray.push(purchase[i]);
     }
@@ -96,7 +96,7 @@ const dateFormat = (date) =>{
     <div className='w-screen h-screen flex flex-col'>
        <VerticalNav/>
        <div className='w-full h-full flex flex-row justify-between'>
-         <div className=' w-56 h-full flex flex-col gap-4 justify-start items-center p-2'>
+         <div className=' w-56 h-full flex flex-col gap-5 justify-start items-center p-2'>
          <KPICards title="Sales revenue" value={getSalesRevenue()} iconName={faChartLine} iconColor="blue" iconBgColor="bg-sky-200" borderColor="border-blue-700" currencyIconName={faIndianRupee}/>
          <KPICards title="Purchase Cost" value={getPurchaseCost()} iconName={faMoneyBill1Wave} iconColor="green" iconBgColor="bg-green-200" borderColor="border-green-700" currencyIconName={faIndianRupee}/>
          <KPICards title="Gross Profit/Loss" value={getSalesRevenue()-getPurchaseCost()} iconName={faChartArea} iconColor="red" iconBgColor="bg-red-200" borderColor="border-red-700" currencyIconName={faIndianRupee}/>
@@ -104,7 +104,7 @@ const dateFormat = (date) =>{
          <KPICards title="Avg. Order Value" value={getAverageOrderValue()} iconName={faShoppingBasket} iconColor="purple" iconBgColor="bg-purple-200" borderColor="border-purple-700"currencyIconName={faIndianRupee}/>
          </div>
          <div className='w-full h-5/6 flex flex-col m-2 gap-4'>
-         <div className='w-full h-2/3 flex flex-col p-3 border-2 rounded-md'>
+         <div className='w-full h-5/6 flex flex-col p-3 border-2 rounded-md'>
           <div className='w-full flex flex-row justify-between items-center mb-2'>
           <h1 className='w-full font-semibold text-sm'>Recent Purchases</h1>
           <NavLink to='/purchases' className='text-sm w-1/6 text-right text-sky-500'>+ Add new purchase</NavLink>
@@ -141,7 +141,7 @@ const dateFormat = (date) =>{
       </table>
           </div>
          </div>
-         <div className='w-full h-2/3 flex flex-col p-3 border-2 rounded-md'>
+         <div className='w-full h-5/6 flex flex-col p-3 border-2 rounded-md'>
           <div className='w-full flex flex-row justify-between items-center mb-2'>
           <h1 className='w-full font-semibold text-sm'>Recent Sales</h1>
           <NavLink to='/sales' className='text-sm w-1/6 text-right text-sky-500'>+ Add new sale</NavLink>

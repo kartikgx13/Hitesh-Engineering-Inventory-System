@@ -10,7 +10,7 @@ function PurchaseList() {
   //first step we will create a useState hook to store the array object
   const [purchase,setPurchase] = useState([])
   const [currentPage,setCurrentPage] = useState(1)
-  const recordsPerPage = 8
+  const recordsPerPage = 7
   const lastIndex = currentPage*recordsPerPage
   const firstIndex = lastIndex-recordsPerPage
   const records = purchase.slice(firstIndex,lastIndex)

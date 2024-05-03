@@ -72,7 +72,7 @@ const BomComponent = () => {
     };
 
     return (
-        <div className='w-2/3 h-full flex flex-col justify-start items-start'>
+        <div className='w-full h-full flex flex-col justify-start items-start'>
             <h1 className='text-sm font-bold w-full p-2'>BOM</h1>
             <div className='w-full h-full flex flex-col justify-start items-start gap-4'>
                 <div className='border-2 border-gray ml-2 w-5/6 shadow-md'></div>

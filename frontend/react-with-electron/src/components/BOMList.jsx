@@ -10,7 +10,7 @@ function BOMList() {
     //first step we will create a useState hook to store the array object
     const [boms,setBoms] = useState([])
     const [currentPage,setCurrentPage] = useState(1)
-    const recordsPerPage = 8
+    const recordsPerPage = 3
     const lastIndex = currentPage*recordsPerPage
     const firstIndex = lastIndex-recordsPerPage
     const records = boms.slice(firstIndex,lastIndex)
