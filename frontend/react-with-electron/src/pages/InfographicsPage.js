@@ -5,6 +5,8 @@ import BarChart from '../components/BarChart'
 import PieChart from '../components/PieChart'
 import LineChart from '../components/LineChart'
 import moment from 'moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faIndianRupee } from '@fortawesome/free-solid-svg-icons'
 
 function InfographicsPage() {
   const [purchase, setPurchase] = useState({});
@@ -48,6 +50,10 @@ const pieChartOptionsSales= {
     title: {
         display: true,
         text: 'Machine name by Sales Amount'
+    },
+    legend:{
+      position:'top',
+      align:'start'
     }
 }
 }
@@ -58,8 +64,13 @@ const pieChartOptionsPurchase= {
     title: {
         display: true,
         text: 'Machine name by Purchase Amount'
+    },
+    legend:{
+      position:'top',
+      align:'start'
     }
-}
+},
+
 }
 
 const barchartOptionsSales= {
@@ -67,9 +78,10 @@ const barchartOptionsSales= {
   plugins: {
     title: {
         display: true,
-        text: 'Machine name by Quantity'
-    }
-}
+        text: 'Machine name by Sales Quantity'
+    },
+    
+},
 }
 
 const barchartOptionsPurchase= {
@@ -77,7 +89,7 @@ const barchartOptionsPurchase= {
   plugins: {
     title: {
         display: true,
-        text: 'Machine name by Quantity'
+        text: 'Machine name by Purchase Quantity'
     }
 }
 }
@@ -246,7 +258,8 @@ const pieChartPurchaseData={
       label:'Purchase Amount',
       data:purchaseAmountDataset(),
       backgroundColor:generateRandomColorsArray(purchaseAmountLabel().length),
-      hoverOffset:4
+      hoverOffset:4,
+      borderWidth:0
     }
   ]
 }
@@ -257,7 +270,8 @@ const pieChartSalesData={
       label:'Purchase Amount',
       data:salesAmountDataset(),
       backgroundColor:generateRandomColorsArray(salesAmountLabel().length),
-      hoverOffset:4
+      hoverOffset:4,
+      borderWidth:0
     }
   ]
 }
@@ -312,6 +326,38 @@ const lineChartData={
     },
   ]
 }
+
+const getSalesRevenue =() =>{
+  let totalSales = 0;
+  for (let i = 0; i < sales.length; i++) {
+    totalSales += sales[i].invoiceAmount * sales[i].quantity;
+  }
+  return totalSales
+}
+
+const getPurchaseCost =() =>{
+  let totalCost = 0;
+  for (let i = 0; i < purchase.length; i++) {
+    totalCost += purchase[i].invoiceAmount * purchase[i].quantity;
+  }
+  return totalCost
+}
+
+const getSalesNumber =() =>{
+  let totalSales = 0;
+  for (let i = 0; i < sales.length; i++) {
+    totalSales += sales[i].quantity;
+  }
+  return totalSales
+}
+
+const getPurchaseNumber =() =>{
+  let totalCost = 0;
+  for (let i = 0; i < purchase.length; i++) {
+    totalCost += purchase[i].quantity;
+  }
+  return totalCost
+}
   return (
     <>
     <div className='w-screen h-screen flex flex-col'>
@@ -324,19 +370,23 @@ const lineChartData={
                <LineChart options={lineChartOptions} dataset={lineChartData}/>
           </div>
           <div className='w-full h-1/2 flex flex-row justify-center items-center gap-4'>
-            <div className='w-1/2 h-full flex justify-center items-center border-2 rounded-md shadow-lg'>
+            <div className='w-1/2 h-full p-2 flex flex-col justify-center items-center border-2 rounded-md shadow-lg'>
             <PieChart options={pieChartOptionsSales} dataset={pieChartSalesData}/>
+            <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Total sales: <FontAwesomeIcon icon={faIndianRupee}/>{getSalesRevenue()}</div>
             </div>
-            <div className='w-1/2 h-full flex justify-center items-center border-2 rounded-md shadow-lg'>
+            <div className='w-1/2 h-full p-2 flex flex-col justify-center items-center border-2 rounded-md shadow-lg'>
             <PieChart options={pieChartOptionsPurchase} dataset={pieChartPurchaseData}/>
+            <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Total Purchase: <FontAwesomeIcon icon={faIndianRupee}/>{getPurchaseCost()}</div>
             </div>
           </div>
        </div>
        <div className='w-1/2 h-5/6 flex flex-col gap-3'>
-          <div className='w-full h-1/2 flex justify-center items-center  border-2 shadow-lg p-2 rounded-md'>
+          <div className='w-full h-1/2 flex flex-col justify-center items-center  border-2 shadow-lg p-2 rounded-md'>
+          <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Net Sales Quantity: {getSalesNumber()}</div>
           <BarChart options={barchartOptionsSales} dataset={salesQuantityBarChartData}/>
           </div>
-          <div className='w-full h-1/2 flex justify-center items-center  border-2 shadow-lg p-2 rounded-md'>
+          <div className='w-full h-1/2 flex flex-col justify-center items-center  border-2 shadow-lg p-2 rounded-md'>
+          <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Total Inventory: {getPurchaseNumber()}</div>
           <BarChart options={barchartOptionsPurchase} dataset={purchaseQuantityBarChartData}/>
           </div>
        </div>
