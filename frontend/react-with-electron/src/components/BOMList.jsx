@@ -98,7 +98,7 @@ function BOMList() {
               .catch(error => {
                   console.error('Error fetching data: ', error);
               })
-      },[])
+      },[boms])
   
       const handleExport = () => {
         const wb = utils.book_new();

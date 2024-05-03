@@ -49,11 +49,11 @@ const pieChartOptionsSales= {
   plugins: {
     title: {
         display: true,
-        text: 'Machine name by Sales Amount'
+        text: 'Top Sales'
     },
     legend:{
       position:'top',
-      align:'start'
+      align:'center'
     }
 }
 }
@@ -63,11 +63,11 @@ const pieChartOptionsPurchase= {
   plugins: {
     title: {
         display: true,
-        text: 'Machine name by Purchase Amount'
+        text: 'Top Purchases'
     },
     legend:{
       position:'top',
-      align:'start'
+      align:'center'
     }
 },
 
@@ -80,7 +80,13 @@ const barchartOptionsSales= {
         display: true,
         text: 'Machine name by Sales Quantity'
     },
-    
+    legend:{
+      labels:{
+        font:{
+          size:8
+        }
+      }
+    }
 },
 }
 
@@ -90,6 +96,13 @@ const barchartOptionsPurchase= {
     title: {
         display: true,
         text: 'Machine name by Purchase Quantity'
+    },
+    legend:{
+      labels:{
+        font:{
+          size:8
+        }
+      }
     }
 }
 }
@@ -151,6 +164,7 @@ const purchaseQuantityDataset = () => {
           allQuantitiesData.push({ partName, quantity });
       }
   }
+  //allQuantitiesData.sort((a, b) => a.quantity - b.quantity);
   return allQuantitiesData.map(item => item.quantity);
 }
 
@@ -168,6 +182,7 @@ const salesQuantityDataset = () => {
           allQuantitiesData.push({ partName, quantity });
       }
   }
+  //allQuantitiesData.sort((a, b) => a.quantity - b.quantity);
   return allQuantitiesData.map(item => item.quantity);
 }
 
@@ -183,6 +198,10 @@ const salesAmountDataset = () => {
           allAmountsData.push({ partName, invoiceAmount });
       }
   }
+  
+  // Sort allAmountsData by invoiceAmount in ascending order
+  allAmountsData.sort((a, b) => a.invoiceAmount - b.invoiceAmount);
+  
   return allAmountsData.map(item => item.invoiceAmount);
 }
 
@@ -198,6 +217,8 @@ const purchaseAmountDataset = () => {
           allAmountsData.push({ partName, invoiceAmount });
       }
   }
+  // Sort allAmountsData by invoiceAmount in ascending order
+  allAmountsData.sort((a, b) => a.invoiceAmount - b.invoiceAmount);
   return allAmountsData.map(item => item.invoiceAmount);
 }
 
@@ -252,24 +273,28 @@ function generateRandomColorsArray(length) {
 }
 
 const pieChartPurchaseData={
-  labels:purchaseAmountLabel(),
+  labels:purchaseAmountLabel().slice(-3),
   datasets:[
     {
       label:'Purchase Amount',
-      data:purchaseAmountDataset(),
-      backgroundColor:generateRandomColorsArray(purchaseAmountLabel().length),
+      data:purchaseAmountDataset().slice(-3),
+      backgroundColor:["rgb(0, 71, 171,0.7)",
+      "rgb(100, 149, 237,0.7)",
+      "rgb(65,105,225,0.7)"],
       hoverOffset:4,
       borderWidth:0
     }
   ]
 }
 const pieChartSalesData={
-  labels:salesAmountLabel(),
+  labels:salesAmountLabel().slice(-3),
   datasets:[
     {
       label:'Purchase Amount',
-      data:salesAmountDataset(),
-      backgroundColor:generateRandomColorsArray(salesAmountLabel().length),
+      data:salesAmountDataset().slice(-3),
+      backgroundColor:["rgb(0, 71, 171,0.7)",
+      "rgb(100, 149, 237,0.7)",
+      "rgb(65,105,225,0.7)"],
       hoverOffset:4,
       borderWidth:0
     }
@@ -290,7 +315,7 @@ const dateWiseInvoiceAmounts = uniqueDates.map(date => {
 
     const totalPurchaseAmount = purchaseArray
         .filter(purchase => purchase.invoiceDate === date)
-        .reduce((total, purchase) => total + purchase.invoiceAmount, 0);
+        .reduce((total, purchase) => total + purchase.invoiceAmount,0);
 
         return {
           date,
@@ -366,10 +391,10 @@ const getPurchaseNumber =() =>{
        {/*<PieChart options={options} dataset={pieChartData}/>*/}
        <div className='w-full h-full flex flex-row justify-center items-start gap-4 p-3'>
        <div className='w-1/2 h-5/6 flex flex-col gap-3'>
-          <div className='w-full h-1/2 flex justify-center items-center  border-2 shadow-lg p-2 rounded-md'>
+          <div className='w-full h-full flex justify-center items-center shadow-lg p-2 rounded-md'>
                <LineChart options={lineChartOptions} dataset={lineChartData}/>
           </div>
-          <div className='w-full h-1/2 flex flex-row justify-center items-center gap-4'>
+          {/*<div className='w-full h-1/2 flex flex-row justify-center items-center gap-4'>
             <div className='w-1/2 h-full p-2 flex flex-col justify-center items-center border-2 rounded-md shadow-lg'>
             <PieChart options={pieChartOptionsSales} dataset={pieChartSalesData}/>
             <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Total sales: <FontAwesomeIcon icon={faIndianRupee}/>{getSalesRevenue()}</div>
@@ -378,16 +403,24 @@ const getPurchaseNumber =() =>{
             <PieChart options={pieChartOptionsPurchase} dataset={pieChartPurchaseData}/>
             <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Total Purchase: <FontAwesomeIcon icon={faIndianRupee}/>{getPurchaseCost()}</div>
             </div>
-          </div>
+  </div>*/}
        </div>
        <div className='w-1/2 h-5/6 flex flex-col gap-3'>
-          <div className='w-full h-1/2 flex flex-col justify-center items-center  border-2 shadow-lg p-2 rounded-md'>
-          <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Net Sales Quantity: {getSalesNumber()}</div>
+          <div className='w-full h-1/2 flex flex-row gap-2 justify-center items-center p-2 '>
+          <div className='w-1/2 h-full flex flex-row justify-center items-center shadow-lg  rounded-md'>
           <BarChart options={barchartOptionsSales} dataset={salesQuantityBarChartData}/>
           </div>
-          <div className='w-full h-1/2 flex flex-col justify-center items-center  border-2 shadow-lg p-2 rounded-md'>
-          <div className='w-full text-sm font-semibold flex flex-row gap-2 justify-end items-center p-2 text-sky-500'>Total Inventory: {getPurchaseNumber()}</div>
+          <div className='w-1/2 h-full flex flex-row justify-center items-center shadow-lg  rounded-md'>
+          <PieChart options={pieChartOptionsSales} dataset={pieChartSalesData}/>
+          </div>
+          </div>
+          <div className='w-full h-1/2 gap-2 flex flex-row justify-center items-center p-2'>
+          <div className='w-1/2 h-full flex flex-row justify-center items-center shadow-lg  rounded-md'>
           <BarChart options={barchartOptionsPurchase} dataset={purchaseQuantityBarChartData}/>
+          </div>
+          <div className='w-1/2 h-full flex flex-row justify-center items-center shadow-lg  rounded-md'>
+          <PieChart options={pieChartOptionsPurchase} dataset={pieChartPurchaseData}/>
+          </div>
           </div>
        </div>
        </div>
