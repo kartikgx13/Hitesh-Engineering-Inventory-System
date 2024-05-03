@@ -19,6 +19,8 @@ ChartJS.register(
     Legend
 );
 
+ChartJS.defaults.font.size = 8
+
 function BarChart({options,dataset}) {
   return (
     <>
