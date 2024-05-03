@@ -25,10 +25,10 @@ ChartJS.register(
 
 
 
-function LineChart() {
+function LineChart({options,dataset}) {
   return (
     <>
-
+       <Line options={options} data={dataset}/>
     </>
   )
 }
